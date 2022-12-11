@@ -8,11 +8,23 @@ class Order {
     Random random = new Random();
     int randomTimeToSleep = random.nextInt(1000, 4000);
 
+
+
     public int getRandomTimeToSleep() {
         return randomTimeToSleep;
     }
 
     private final Object monitor = new Object();
+
+    private final String orderName;
+
+    Order(String orderName) {
+        this.orderName = orderName;
+    }
+
+    public String getOrderName() {
+        return orderName;
+    }
 
     public void add(Runnable task) {
         synchronized (monitor) {

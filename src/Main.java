@@ -1,9 +1,11 @@
 import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class Main {
+/*
+    public static void main(String[] args) {
+        new TaxiApp();
+    }
+}*/
 
     static final Object syncMonitor = new Object();
     static ArrayList<TaxiImpl> taxiPark = new ArrayList<>();
@@ -21,7 +23,7 @@ public class Main {
             }
         }
         availableTaxis.remove(taxi);
-/*
+
         //Создать парк из 10 такси в цикле
         //availableTaxis = taxiPark
         //Получить executedOrders
@@ -30,18 +32,23 @@ public class Main {
 
             //если taxi != null -  // availableTaxis.remove(taxi)
             //открываем поток
-            //Открыть новый поток
-               //Create new Order
-               //Place order to Taxi
-               //Taxi.run
-               //Такси выполнило заказ
-               //Taxi notify Dispatcher its available again
-               //availableTaxis.add(taxi)
+           new Thread(new Runnable() {
+               @Override
+               public void run() {
+                   //Create new Order
+                   //Place order to Taxi
+                   //Taxi.run
+                   //Такси выполнило заказ
+                   //Taxi notify Dispatcher its available again
+                   //availableTaxis.add(taxi)
+               }
+            }
+            ).start();
+        }
 
-        }*/
-        /*Order[] orders = new Order[10];
+ Order[] orders = new Order[10];
 
-        }*/
+     /*   }
         Order order = new Order();
         for (int i = 0; i <= 10; i++) {
             order.add(new Runnable() {
@@ -145,5 +152,5 @@ public class Main {
                 });
             }
         }
-    }
+    }*/
 }
