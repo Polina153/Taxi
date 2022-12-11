@@ -1,9 +1,9 @@
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
-import java.util.concurrent.BlockingQueue;
 
-public class Order{
+class Order {
+
     private final Queue<Runnable> queue = new LinkedList<>();
     Random random = new Random();
     int randomTimeToSleep = random.nextInt(1000, 4000);
@@ -11,6 +11,7 @@ public class Order{
     public int getRandomTimeToSleep() {
         return randomTimeToSleep;
     }
+
     private final Object monitor = new Object();
 
     public void add(Runnable task) {
@@ -22,7 +23,7 @@ public class Order{
 
     public Runnable take() {
         synchronized (monitor) {
-            while(queue.isEmpty()){
+            while (queue.isEmpty()) {
                 try {
                     monitor.wait();
                 } catch (InterruptedException e) {
